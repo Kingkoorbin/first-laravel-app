@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('enrolled_subjects', function (Blueprint $table) {
-            $table->id('esNo');
-            $table->string('subjectCode', 12);
-            $table->string('description', 100);
-            $table->smallInteger('units');
-            $table->string('schedule', 30);
+        Schema::create('stuBalance', function (Blueprint $table) {
+            $table->id('bNo');
+            $table->unsignedBigInteger('sNo');
+            $table->decimal('amountDue', $precision = 8, $scale = 2);
+            $table->decimal('totalBalance', $precision = 8, $scale = 2);
+            $table->text('notes');
             $table->timestamps();
+            $table->foreign('sNo')->references('sNo')->on('studentinfo');
         });
     }
 
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enrolled_subjects');
+        Schema::dropIfExists('stuBalance');
     }
 };
