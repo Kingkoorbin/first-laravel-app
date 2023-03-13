@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentInfoController;
+use App\Http\Controllers\EnrolledSubjectsController;
+use App\Http\Controllers\GradesController;
+use App\Http\Controllers\BalancesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +18,9 @@ use App\Http\Controllers\StudentInfoController;
 */
 
 Route::get('/addstudent', [StudentInfoController::class,'index']);
+Route::get('/enrolledsub', [EnrolledSubjectsController::class, 'index']);
+Route::get('/addgrades',[GradesController::class,'index']);
+Route::get('/balance', [BalancesController::class,'index']);
 
 Route::get('/', function () {
     return view('welcome');

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\studentinfo;
-
-class StudentInfoController extends Controller
+use App\Models\Grades;
+class GradesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,37 +14,15 @@ class StudentInfoController extends Controller
     public function index()
     {
         //
-        // $studentinfo = new studentinfo();
-
-        // $studentinfo->idNo = "C18-0362";
-        // $studentinfo->firstName = "Corbain Clyde";
-        // $studentinfo->middleName = "Rin";
-        // $studentinfo->lastName = "More";
-        // $studentinfo->suffix = "";
-        // $studentinfo->course = "BSIT";
-        // $studentinfo->year = 3;
-        // $studentinfo->birthDate = "2000-03-03";
-        // $studentinfo->gender = "Male";
-
-        // $studentinfo->save();
-
-        // echo "Student information successfully Added!";
-
-        //delete record
-        //find() -- useing the field name 'id' (default)
-        //where() -- using another field name
-
-        // $studentinfo = studentinfo::where('sno', 3);
-        // $studentinfo->delete();
-        // echo "Student info deleted.";
-
-        // $studentinfo = studentinfo::where('sno', 1)
-        // ->update(['firstname' => 'Corbain']);
-        // echo "student info has been edited.";
-
-        //Retrieve Record
-        $studentinfo = studentinfo::all();
-        return $studentinfo;
+        $Grades = new Grades();
+        $Grades->esNo = "1";
+        $Grades->sNo = "1";
+        $Grades->prelim = 1.00;
+        $Grades->midterm = 1.00;
+        $Grades->finals = 1.00;
+        $Grades->remarks = "P";
+        $Grades->save();
+        echo "added";
 
     }
 
