@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentInfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,11 @@ Route::get('/students', function () {
 Route::get('/students/add', function () {
     return view('students.add');
 })->middleware(['auth', 'verified'])->name('add-student');
+
+//03 store student info to create function under student info controller
+Route::post('/students/add', [StudentInfoController::class, 'store'])
+->middleware(['auth', 'verified'])
+->name('student-store');
 
 
 

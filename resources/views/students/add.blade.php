@@ -9,53 +9,54 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{ route('student-store') }}">
+                        @csrf
                     <div class="flex items-center">
                         <label for="ID Number">ID Number</label>
                         <div>
-                            <input type="text" name="xidNo" value="{{}}"/>
+                            <input type="text" name="xidNo" value="{{ old('xidNo') }}"/>
                         </div>
                     </div>
                     <div class="flex items-center">
                         <label for="First Name">First Name</label>
                         <div>
-                            <input type="text" name="xfirstName" value="{{}}"/>
+                            <input type="text" name="xfirstName" value="{{ old('xfirstName') }}"/>
                         </div>
                     </div>
                     <div class="flex items-center">
                         <label for="Middle Name">Middle Name</label>
                         <div>
-                            <input type="text" name="xmiddleName" value="{{}}"/>
+                            <input type="text" name="xmiddleName" value="{{ old('xmiddleName') }}"/>
                         </div>
                     </div>
                     <div class="flex items-center">
                         <label for="Last Name">Last Name</label>
                         <div>
-                            <input type="text" name="xlastName" value="{{}}"/>
+                            <input type="text" name="xlastName" value="{{ old('xlastName') }}"/>
                         </div>
                     </div>
                     <div class="flex items-center">
                         <label for="Suffix">Suffix</label>
                         <div>
-                            <input type="text" name="xsuffix" value="{{}}"/>
+                            <input type="text" name="xsuffix" value="{{ old('xsuffix') }}"/>
                         </div>
                     </div>
                     <div class="flex items-center">
                         <label for="Course">Course</label>
                         <div>
-                            <input type="text" name="xcourse" value="{{}}"/>
+                            <input type="text" name="xcourse" value="{{ old('xcourse') }}"/>
                         </div>
                     </div>
                     <div class="flex items-center">
                         <label for="Year Level">Year Level</label>
                         <div>
-                            <input type="number" min='1' max='4' name="xyear" value="{{}}"/>
+                            <input type="number" min='1' max='4' name="xyear" value="{{ old('xyear') }}"/>
                         </div>
                     </div>
                     <div class="flex items-center">
                         <label for="Birth Date">Birth Date</label>
                         <div>
-                            <input type="date" name="xbirthDate" value="{{}}"/>
+                            <input type="date" name="xbirthDate" value="{{ old('xbirthDate') }}"/>
                         </div>
                     </div>
                     <div class="flex items-center">
@@ -66,7 +67,7 @@
                                 <option value="Female">Female</option>
                         </div>
                     </div>
-
+                        <input type="submit" value="Submit Info"/>
                     </form>
                 </div>
             </div>
