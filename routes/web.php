@@ -24,9 +24,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //01 route to student info
-Route::get('/students', function () {
-    return view('students/index');
-})->middleware(['auth', 'verified'])->name('students');
+// Route::get('/students', function () {
+//     return view('students/index');
+// })->middleware(['auth', 'verified'])->name('students');
 
 //02 route to form add students
 Route::get('/students/add', function () {
@@ -38,6 +38,15 @@ Route::post('/students/add', [StudentInfoController::class, 'store'])
 ->middleware(['auth', 'verified'])
 ->name('student-store');
 
+//04 get all data from studentinfo table
+Route::get('/students', [StudentInfoController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('students');
+
+//05 view individually student info
+Route::get('/students/{stuno}', [StudentInfoController::class, 'show'])
+->middleware(['auth', 'verified'])
+->name('students-show');
 
 
 

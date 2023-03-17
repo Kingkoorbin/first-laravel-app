@@ -23,20 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($studentinfo as $stuinfo)
-                                <tr>
-                                    <td>{{ $stuinfo->idNo }}</td>
-                                    <td>{{ $stuinfo->firstName }}  {{ $stuinfo->middleName }} {{ $stuinfo->lastName }}</td>
-                                    <td>{{ $stuinfo->course }} - {{ $stuinfo->year }}</td>
-                                    <td>{{ date("F j, Y", strtotime($stuinfo->birthDate)) }}</td>
-                                    <td>{{ $stuinfo->gender }}</td>
-                                    <td>
-                                        <a class="mt-4 bg-teal-200 hover:bg-green-500 text-black font-bold py-2 px-4 rounded" href="{{route('students-show', ['stuno' => $stuinfo->sno]) }}">View</a>
-                                        <a class="mt-4 bg-blue-200 hover:bg-purple-500 text-black font-bold py-2 px-4 rounded" href="#">Edit</a>
-                                        <a class="mt-4 bg-red-200 hover:bg-red-500 text-black font-bold py-2 px-4 rounded" href="#">Delete</a>
-                                    </td>
-                                </tr>
-                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
