@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <a href="{{ route('add-student') }}">Add Student Information</a>
+
                     <h6>List of Students</h6>
                     <table class="border-separate border-spacing-5">
                         <thead>
@@ -19,13 +19,23 @@
                             <th>Course & Year</th>
                             <th>Birth Date</th>
                             <th>Gender</th>
-                            <th>Options</th>
+
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($studentinfo as $stuinfo)
+                                <tr>
+                                    <td>{{ $stuinfo->idNo }}</td>
+                                    <td>{{ $stuinfo->firstName }}  {{ $stuinfo->middleName }} {{ $stuinfo->lastName }}</td>
+                                    <td>{{ $stuinfo->course }} - {{ $stuinfo->year }}</td>
+                                    <td>{{ date("F j, Y", strtotime($stuinfo->birthDate)) }}</td>
+                                    <td>{{ $stuinfo->gender }}</td>
 
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
+                    <a class="mt-4 bg-blue-200 hover:bg-purple-500 text-black font-bold py-2 px-4 rounded" href="{{ route('students') }}">Back</a>
                 </div>
             </div>
         </div>
