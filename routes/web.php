@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentInfoController;
+use App\Http\Controllers\EnrolledSubjectsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,38 @@ Route::get('/students', [StudentInfoController::class, 'index'])
 Route::get('/students/{stuno}', [StudentInfoController::class, 'show'])
 ->middleware(['auth', 'verified'])
 ->name('students-show');
+
+Route::get('/enrolledsubjects', [EnrolledSubjectsController:: class, 'index']);
+
+Route::get('/views/enrolledsubjects', [EnrolledSubjectsController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('enrolledsubjects');
+
+
+Route::get('/enrolledsubjects/add', function () {
+    return view('enrolledsubjects.add');
+})->middleware(['auth', 'verified'])->name('add-enrolledsubjects');
+
+Route::post('/enrolledsubjects/add',[EnrolledSubjectsController::class, 'store'] )
+->middleware(['auth', 'verified'])
+->name('enrolledsubjects-store');
+
+Route::get('/enrolledsubjects/{esNo}', [EnrolledSubjectsController::class, 'show'])
+->middleware(['auth', 'verified'])
+->name('enrolledsubjects-show');
+
+Route::delete('/enrolledsubjects/delete/{esNo}', [EnrolledSubjectsController::class, 'destroy'])
+->middleware(['auth', 'verified'])
+->name('enrolledsubjects-delete');
+
+Route::get('/enrolledsubjects/edit/{esNo}', [EnrolledSubjectsController::class, 'edit'])
+->middleware(['auth', 'verified'])
+->name('enrolledsubjects-edit');
+
+Route::patch('/enrolledsubjects/update/{esNo}', [EnrolledSubjectsController::class, 'update'])
+->middleware(['auth', 'verified'])
+->name('enrolledsubjects-update');
+
 
 
 
