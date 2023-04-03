@@ -13,7 +13,7 @@ class Grades extends Model
 
     protected $fillable =[
         'esNo',
-        'sNo',
+        'sno',
         'prelim',
         'midterm',
         'finals',

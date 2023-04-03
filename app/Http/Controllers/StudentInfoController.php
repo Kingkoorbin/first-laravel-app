@@ -92,6 +92,10 @@ class StudentInfoController extends Controller
     public function edit($id)
     {
         //
+
+        $studentinfo = StudentInfo::where('sno', $id)->get();
+        return view('students.edit', compact('studentinfo'));
+
     }
 
     /**
@@ -104,6 +108,21 @@ class StudentInfoController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $studentinfo = StudentInfo::where('sno', $id)
+        ->update(
+             ['idNo' => $request->xidNo,
+             'firstName'=> $request->xfirstName,
+             'middleName'=> $request->xmiddleName,
+             'lastName'=> $request->xlastName,
+             'suffix'=> $request->xsuffix,
+             'course'=> $request->xcourse,
+             'year'=>$request->xyear,
+             'birthDate'=> $request->xbirthDate,
+             'gender'=> $request->xgender,
+             ]);
+        return redirect()->route('students');
+
     }
 
     /**
@@ -115,5 +134,9 @@ class StudentInfoController extends Controller
     public function destroy($id)
     {
         //
+
+        $studentinfo = StudentInfo::where('sno', $id);
+        $studentinfo->delete();
+        return redirect()->route('students');
     }
 }

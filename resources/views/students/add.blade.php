@@ -9,73 +9,61 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @if($errors)
                     <h6>Errors Encountered:</h6>
+                    @if($errors)
                     <ul>
                         @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                         @endforeach
                     </ul>
                     @endif
+                    <br /><br>
                     <form method="POST" action="{{ route('student-store') }}">
                         @csrf
-                    <div class="flex items-center">
-                        <label for="ID Number">ID Number</label>
-                        <div>
-                            <input type="text" class="text-black" name="xidNo" value="{{ old('xidNo') }}"/>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex flex-col">
+                                <label for="ID Number" class="font-bold">ID Number:</label>
+                                <input type="text" name="xidNo" value="{{ old('xidNo') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="First Name" class="font-bold">First Name:</label>
+                                <input type="text" name="xfirstName" value="{{ old('xfirstName') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="Middle Name" class="font-bold">Middle Name:</label>
+                                <input type="text" name="xmiddleName" value="{{ old('xmiddleName') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="Last Name" class="font-bold">Last Name:</label>
+                                <input type="text" name="xlastName" value="{{ old('xlastName') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="Suffix" class="font-bold">Suffix:</label>
+                                <input type="text" name="xsuffix" value="{{ old('xsuffix') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="Course" class="font-bold">Course:</label>
+                                <input type="text" name="xcourse" value="{{ old('xcourse') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="Year Level" class="font-bold">Year Level</label>
+                                <input type="number" min='1' max='4' name="xyear" value="{{ old('xyear') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="Birth Date" class="font-bold">Birth Date</label>
+                                <input type="date" name="xbirthDate" value="{{ old('xbirthDate') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="Gender" class="font-bold">Gender</label>
+                                <select name="xgender" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex items-center">
-                        <label for="First Name">First Name</label>
-                        <div>
-                            <input type="text" class="text-black" name="xfirstName" value="{{ old('xfirstName') }}"/>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <label for="Middle Name">Middle Name</label>
-                        <div>
-                            <input type="text" class="text-black" name="xmiddleName" value="{{ old('xmiddleName') }}"/>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <label for="Last Name">Last Name</label>
-                        <div>
-                            <input type="text" class="text-black" name="xlastName" value="{{ old('xlastName') }}"/>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <label for="Suffix">Suffix</label>
-                        <div>
-                            <input type="text" class="text-black" name="xsuffix" value="{{ old('xsuffix') }}"/>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <label for="Course">Course</label>
-                        <div>
-                            <input type="text" class="text-black" name="xcourse" value="{{ old('xcourse') }}"/>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <label for="Year Level">Year Level</label>
-                        <div>
-                            <input type="number" class="text-black" min='1' max='4' name="xyear" value="{{ old('xyear') }}"/>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <label for="Birth Date">Birth Date</label>
-                        <div>
-                            <input type="date" class="text-black" name="xbirthDate" value="{{ old('xbirthDate') }}"/>
-                        </div>
-                    </div>
-                    <div class="flex items-center">
-                        <label for="Gender">Gender</label>
-                        <div>
-                            <select class="text-black" name="xgender">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                        </div>
-                    </div>
-                        <input type="submit" value="Submit Info"/>
+                        <br> <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500">Add</button><br>
+
+                        <a class="mt-4 float-left bg-blue-200 text-black font-bold py-2 px-4 mb-5 rounded" href="{{route('students')}}"> Back </a><br/>
                     </form>
                 </div>
             </div>

@@ -12,7 +12,7 @@ class Balances extends Model
     protected $table = 'stubalance';
 
     protected $fillable =[
-        'sNo',
+        'sno',
         'amountDue',
         'totalBalance',
         'notes',

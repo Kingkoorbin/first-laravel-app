@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Balances;
+use App\Models\studentinfo;
 
 class BalancesController extends Controller
 {
@@ -16,13 +17,16 @@ class BalancesController extends Controller
     {
         //
 
-        $Balances = new Balances();
-        $Balances->sNo = 1;
-        $Balances->amountDue = 2432.23;
-        $Balances->totalBalance = 9000.00;
-        $Balances->notes = "KUMBAYA";
-        $Balances->save();
-        echo "added!";
+        // $Balances = new Balances();
+        // $Balances->sNo = 1;
+        // $Balances->amountDue = 2432.23;
+        // $Balances->totalBalance = 9000.00;
+        // $Balances->notes = "KUMBAYA";
+        // $Balances->save();
+        // echo "added!";
+
+        $balances = Balances:: join('studentinfo', 'stubalance.sno', '=', 'studentinfo.sno')->get();
+        return view('balances.index', compact('balances'));
     }
 
     /**
@@ -44,6 +48,20 @@ class BalancesController extends Controller
     public function store(Request $request)
     {
         //
+
+        // $validateData = $request->validate([
+        //     'xamountDue' => ['required', 'precision: 8, scale: 2'],
+        //     'xtotalBalance' => ['required', 'precision: 8, scale: 2'],
+        //     'xnotes' => ['required'],
+        // ]);
+        $balances = new Balances();
+        $balances->sno = $request->xsno;
+        $balances->amountDue = $request->xamountDue;
+        $balances->totalBalance = $request->xtotalBalance;
+        $balances->notes = $request->xnotes;
+        $balances->save();
+        return redirect()->route('balances');
+
     }
 
     /**
@@ -55,6 +73,9 @@ class BalancesController extends Controller
     public function show($id)
     {
         //
+        $balances = Balances::where('bNo', $id)->get();
+        return view('balances.show', compact('balances'));
+
     }
 
     /**
@@ -66,6 +87,8 @@ class BalancesController extends Controller
     public function edit($id)
     {
         //
+        $balances = Balances::where('bNo', $id)->get();
+        return view('balances.edit', compact('balances'));
     }
 
     /**
@@ -78,7 +101,19 @@ class BalancesController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
+
+
+
+        $balances = Balances::where('bNo', $id)
+        ->update(
+             ['sno' => $request->xsno,
+             'amountDue'=> $request->xamountDue,
+             'totalAmount'=> $request->xtotalAmount,
+             'notes'=> $request->xnotes,
+             ]);
+          return redirect()->route('enrolledsubjects');
+
+            }
 
     /**
      * Remove the specified resource from storage.
@@ -89,5 +124,10 @@ class BalancesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getStudentInfo(){
+        $studentinfo = studentinfo::all();
+        return view('balances.add', compact('studentinfo'));
     }
 }

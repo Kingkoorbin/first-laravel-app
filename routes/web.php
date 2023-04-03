@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentInfoController;
 use App\Http\Controllers\EnrolledSubjectsController;
+use App\Http\Controllers\BalancesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,7 +50,22 @@ Route::get('/students/{stuno}', [StudentInfoController::class, 'show'])
 ->middleware(['auth', 'verified'])
 ->name('students-show');
 
+Route::delete('/students/delete/{stuno}', [StudentInfoController::class, 'destroy'])
+   ->middleware(['auth', 'verified'])
+   ->name('students-delete');
+
+   Route::get('/students/edit/{stuno}', [StudentInfoController::class, 'edit'])
+   ->middleware(['auth', 'verified'])
+   ->name('students-edit');
+
+   Route::patch('/students/update/{stuno}', [StudentInfoController::class, 'update'])
+   ->middleware(['auth', 'verified'])
+   ->name('students-update');
+
 Route::get('/enrolledsubjects', [EnrolledSubjectsController:: class, 'index']);
+
+
+//For Enrolled Subjects
 
 Route::get('/views/enrolledsubjects', [EnrolledSubjectsController::class, 'index'])
 ->middleware(['auth', 'verified'])
@@ -80,8 +96,35 @@ Route::patch('/enrolledsubjects/update/{esNo}', [EnrolledSubjectsController::cla
 ->middleware(['auth', 'verified'])
 ->name('enrolledsubjects-update');
 
+//for balances
 
+Route::get('/balances', [BalancesController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('balances');
 
+Route::get('/balances/add', [BalancesController::class, 'getStudentInfo'])
+->middleware(['auth', 'verified'])
+->name('balances-add');
+
+Route::post('/balances/store', [BalancesController::class, 'store'])
+->middleware(['auth', 'verified'])
+->name('balances-store');
+
+Route::get('/balances/{bNo}', [BalancesController::class, 'show'])
+->middleware(['auth', 'verified'])
+->name('balances-show');
+
+Route::delete('/balances/delete/{bNo}', [BalancesController::class, 'destroy'])
+->middleware(['auth', 'verified'])
+->name('balances-delete');
+
+Route::get('/balances/edit/{bNo}', [BalancesController::class, 'edit'])
+->middleware(['auth', 'verified'])
+->name('balances-edit');
+
+Route::patch('/balances/update/{bNo}', [BalancesController::class, 'update'])
+->middleware(['auth', 'verified'])
+->name('balances-update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

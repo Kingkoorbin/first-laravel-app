@@ -16,7 +16,7 @@ class GradesController extends Controller
         //
         $Grades = new Grades();
         $Grades->esNo = "1";
-        $Grades->sNo = "1";
+        $Grades->sno = "1";
         $Grades->prelim = 1.00;
         $Grades->midterm = 1.00;
         $Grades->finals = 1.00;
