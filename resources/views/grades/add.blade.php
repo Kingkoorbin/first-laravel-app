@@ -43,7 +43,7 @@
                             </div>
                             <div class="flex flex-col">
                                 <label for="midterm" class="font-bold">Miderm:</label>
-                                <input type="text" name="xmiderm" value="{{ old('xmidterm') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                                <input type="text" name="xmidterm" value="{{ old('xmidterm') }}" class="border border-gray-300 px-2 py-1 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
                             </div>
                             <div class="flex flex-col">
                                 <label for="finals" class="font-bold">Finals:</label>

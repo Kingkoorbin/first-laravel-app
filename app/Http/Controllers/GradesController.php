@@ -46,7 +46,7 @@ class GradesController extends Controller
         $grades->prelim = $request->xprelim;
         $grades->midterm = $request->xmidterm;
         $grades->finals = $request->xfinals;
-        $grades->remarks = $request->remarks;
+        $grades->remarks = $request->xremarks;
         $grades->save();
         return redirect()->route('grades');
 
