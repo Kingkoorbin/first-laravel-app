@@ -124,6 +124,9 @@ class BalancesController extends Controller
     public function destroy($id)
     {
         //
+        $balances = Balances::where('bNo', $id);
+        $balances->delete();
+        return redirect()->route('balances');
     }
 
     public function getStudentInfo(){

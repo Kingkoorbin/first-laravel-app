@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentInfoController;
 use App\Http\Controllers\EnrolledSubjectsController;
 use App\Http\Controllers\BalancesController;
+use App\Http\Controllers\GradesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -125,6 +126,42 @@ Route::get('/balances/edit/{bNo}', [BalancesController::class, 'edit'])
 Route::patch('/balances/update/{bNo}', [BalancesController::class, 'update'])
 ->middleware(['auth', 'verified'])
 ->name('balances-update');
+
+
+//for Grades
+
+Route::get('/grades', [GradesController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('grades');
+
+Route::get('/grades/add', [GradesController::class, 'getStudentInfo'])
+->middleware(['auth', 'verified'])
+->name('grades-add');
+
+Route::get('/grades/add', [GradesController::class, 'getSubjectInfo'])
+->middleware(['auth', 'verified'])
+->name('grades-add');
+
+Route::post('/grades/add', [GradesController::class, 'store'])
+->middleware(['auth', 'verified'])
+->name('grades-store');
+
+Route::get('/grades/{gNo}', [GradesController::class, 'show'])
+->middleware(['auth', 'verified'])
+->name('grades-show');
+
+Route::get('/grades/edit/{gNo}', [GradesController::class, 'edit'])
+->middleware(['auth', 'verified'])
+->name('grades-edit');
+
+Route::patch('/grades/update/{gNo}', [GradesController::class, 'update'])
+->middleware(['auth', 'verified'])
+->name('grades-update');
+
+Route::delete('/grades/delete/{gNo}', [GradesController::class, 'destroy'])
+->middleware(['auth', 'verified'])
+->name('grades-delete');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
